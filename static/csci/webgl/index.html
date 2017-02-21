@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<!-- 
+	Written By: Charlie McClung
+	Date: 02/17/2012
+	Assignment 4: WebGL
+-->
+<html>
+	<head>
+		<title>Charlie McClung: Assignment 4</title>
+		<link href="css/jqueryUI.css" rel="stylesheet" type="text/css" />
+		
+		<!-- CanvasMatrix class(c) Apple Inc -->
+		<script src="js/CanvasMatrix.js" type="text/javascript"></script>
+
+		<!-- Vertex shader -->
+		<script id="shader-vs" type="x-shader/x-vertex"> 
+			precision highp float;
+			attribute vec3 XYZ;
+			attribute vec3 RGB;
+			uniform mat4 ProjectionMatrix;
+			uniform mat4 ModelviewMatrix;
+			varying vec3 col;
+			void main(void)
+			{
+				vec3 n = vec3(0.2,0.4,0.6);
+				col = RGB * n;
+				gl_Position = ProjectionMatrix * ModelviewMatrix * vec4(XYZ,1);
+			}
+		</script> 
+		 
+		<!-- Fragment shader -->
+		<script id="shader-fs" type="x-shader/x-fragment"> 
+			precision highp float;
+			varying vec3 col;
+			void main(void)
+			{
+				gl_FragColor = vec4(col,1);
+			}
+		</script> 
+		
+		<!-- Include JavaScript for main functionality -->
+		<script src="js/jquery.js" type="text/javascript"></script>
+		<script src="js/jqueryUI.js" type="text/javascript"></script>
+		<script src="js/functions.js" type="text/javascript"></script>
+		<script src="js/hw4.js" type="text/javascript"></script>
+	</head>
+	<body onload="webGLStart();" onresize="canvas.resize();"> 
+		<H1>Charlie McClung: Assignment 4</H1>
+		<div>
+			Click & drag on canvas to rotate robot.<br />
+			<span style="font-weight:bold;">*Note:</span> He always rotates around center(0,0,0).<br />
+			Use controls below to change robot location/size.
+		</div>
+		<hr>
+		<div style="float:left; margin:0 20px; width:90px;">
+			<H3>Controls:</H3>
+			<hr>
+			<form>
+			<!-- Controls to set translation -->
+				<p>
+					<label for="controlX">x=</label>
+					<input id="controlX" type="text" value="0" /><br />
+				</p>
+				<div onmouseup="webGLStart()" id="sliderX"></div>
+				<p>
+					<label for="controlY">y=</label>
+					<input id="controlY" type="text" value="0" /><br />
+				</p>
+				<div onmouseup="webGLStart()" id="sliderY"></div>
+				<p>
+					<label for="controlZ">z=</label>
+					<input id="controlZ" type="text" value="0" /><br />
+				</p>
+				<div onmouseup="webGLStart()" id="sliderZ"></div>
+			
+			<!-- Controls to set scale -->
+				<p>
+					<label for="controlDX">dx=</label>
+					<input id="controlDX" type="text" value="1" /><br />
+				</p>
+				<div onmouseup="webGLStart()" id="sliderDX"></div>
+				<p>
+					<label for="controlDY">dy=</label>
+					<input id="controlDY" type="text" value="1" /><br />
+				</p>
+				<div onmouseup="webGLStart()" id="sliderDY"></div>
+				<p>
+					<label for="controlDZ">dz=</label>
+					<input id="controlDZ" type="text" value="1" /><br />
+				</p>
+				<div onmouseup="webGLStart()" id="sliderDZ"></div>
+				<br />
+			<!-- Reset all control values -->
+				<span onclick="resetControls()" class="button">Reset</span>
+			</form>
+		</div>
+		<canvas id="canvas" width="500" height="500"></canvas> 
+	</body>
+</html>

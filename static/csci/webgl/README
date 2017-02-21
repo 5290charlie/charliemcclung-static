@@ -1,0 +1,23 @@
+Homework 4 README
+Charlie McClung
+==================
+
+Controls:
+	- Click & drag to rotate robot
+	- Use slider to increase/decrease x/y/z or dx/dy/dz
+	
+Description:
+		I had a tough time getting started with WebGL.
+	I wasn't sure where to begin, and I couldn't really
+	think of anything cool to do (that was possible :P).
+	I finally was able to spend several hours on it
+	tonight, and finally started to make some progress!
+	So I decided that a basic robot wouldn't be too hard
+	to build with triangles ... It wasn't too bad, but I
+	hand coded in every vertex just to test my WebGL 
+	knowledge and to practice understanding the 3D 
+	vertex array, and how it is processed. I realized
+	that I could probably put some simple controls
+	on the HTML page and have them edit the values of 
+	the vertexes. So I added some jQuery sliders to 
+	let you edit the robot.
