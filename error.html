@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Charlie McClung | Error</title>
+		<script src="js/QueryString.js"></script>
+	</head>
+	<body>
+		<h1>Error: <span id="errorcode">###</span></h1>
+		<p id="details">
+			No detailed message about this error.
+		</p>
+		<hr>
+		<p>
+			<a href="/">&lt; Return to homepage</a>
+		</p>
+
+		<script>
+		if (QueryString.c && /\d\d\d/.test(QueryString.c)) {
+			document.getElementById('errorcode').innerText = QueryString.c;
+		}
+
+		if (QueryString.m && /[\w\s]+/.test(QueryString.m)) {
+			document.getElementById('details').innerText = QueryString.m;
+		}		
+		</script>
+	</body>
+</html>
