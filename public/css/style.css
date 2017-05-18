@@ -1,7 +1,20 @@
-#page-experience article.experience {
+#page-experience article.experience, #page-education article.education {
 	border: 1px solid rgba(0,0,0,.15);
 	border-radius: 5px;
 	margin: 10px;
 	padding: 10px 15px;
-	min-height: 300px;
+}
+
+#page-education article.education .certification-badges {
+	text-align: left;
+}
+
+#page-education article.education .certification-badges img {
+	display: inline-block;
+	margin: 10px;
+	width: 100px;
+}
+
+#page-experience article.experience {
+	min-height: 300px;	
 }
